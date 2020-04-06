@@ -30,4 +30,14 @@ class TiebaSpider(scrapy.Spider):
 
 
     def parse_detail(self, response):
-        pass
+        print("抓取的url地址是：" + str(response.url))
+        # 帖子的标题
+        title = response.css(".core_title_txt.pull-left.text-overflow::text").extract()
+        print("当前获取的帖子的主题是：" + title)
+
+        if title:
+            # 获取的作者们（list）
+            author_list = response.css(".p_author_name.j_user_card::text").extract()
+
+            # 获取帖子的内容
+            content_list = response.css(".d_post_content.j_d_post_content").extract()
