@@ -64,9 +64,9 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'my_spider.pipelines.MySpiderPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'my_spider.pipelines.MySqlTwistedPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -88,3 +88,9 @@ ROBOTSTXT_OBEY = False
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+
+MYSQL_HOST = "192.168.0.107"
+MYSQL_DBNAME = "spider"
+MYSQL_USER = "admin"
+MYSQL_PASSWORD = "123456"

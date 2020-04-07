@@ -3,6 +3,8 @@ from urllib import parse
 
 import scrapy
 
+from lesson_2.my_spider.my_spider.items import TieBaItem
+
 
 class TiebaSpider(scrapy.Spider):
     name = 'tieba'
@@ -44,20 +46,28 @@ class TiebaSpider(scrapy.Spider):
 
             bbs_sendtime_list, bbs_floor_list = self.get_sendtime_and_floor(response)
             for i in range(len(author_list)):
+                tieba_item = TieBaItem()
                 print(author_list[i])
+                tieba_item["title"] = title
+                tieba_item["author"] = author_list[i]
                 print(content_list[i])
+                tieba_item["content"] = content_list[i]
                 print(bbs_floor_list[i])
+                tieba_item["reply_time"] = bbs_sendtime_list[i]
+                tieba_item["floor"] = bbs_floor_list[i]
                 print(bbs_sendtime_list[i])
+                # tieba_item["reply_time"] = bbs_sendtime_list[i]
+                yield tieba_item
         # 详情页面的翻页
         # 拿到详情页面的url的list
         detail_next_page_list = response.css(".l_pager.pager_theme_4.pb_list_pager a::attr(href)").extract()
 
 
         if detail_next_page_list:
-            for next_page in detail_next_page_list:
-                yield scrapy.Request(url=parse.urljoin(response.url, next_page), callback=self.parse_detail)
+            # for next_page in detail_next_page_list:
+            #     yield scrapy.Request(url=parse.urljoin(response.url, next_page), callback=self.parse_detail)
 
-
+            yield scrapy.Request(url=parse.urljoin(response.url, detail_next_page_list[-2]), callback=self.parse_detail)
 
     def get_sendtime_and_floor(self, response):
         # 获取帖子的时间和楼数
