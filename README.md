@@ -16,6 +16,8 @@ scrapy shell应用命令：
 
 	通过class提取里面的text:response.css(".class::text").extract()
 
-
+	拿到一个标签下的一个标签用空格隔开, 比如拿到class标签下的a标签：response.css(.class a).extract()
 }
+
+
 
