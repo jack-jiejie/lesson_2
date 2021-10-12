@@ -39,7 +39,7 @@ mpl-finance==0.10.0
 nltk==3.4.5
 numpy==1.16.2
 opencv-contrib-python==4.0.0.21
-opencv-python==4.0.0.21
+opencv-python==4.2.0.32
 pandas==0.24.1
 pbr==5.4.4
 Pillow==5.4.1
