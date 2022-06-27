@@ -60,7 +60,7 @@ python-dotenv==0.10.1
 pytz==2018.9
 QScintilla==2.11.1
 query-string==2019.4.13
-reportlab==3.5.23
+reportlab==3.5.55
 request==2019.4.13
 requests==2.22.0
 scikit-learn==0.21.3
