@@ -44,7 +44,7 @@ pandas==0.24.1
 pbr==5.4.4
 Pillow==5.4.1
 post==2019.4.13
-protobuf==3.9.0
+protobuf==3.18.3
 public==2019.4.13
 pygame==1.9.6
 pyglet==1.4.1
